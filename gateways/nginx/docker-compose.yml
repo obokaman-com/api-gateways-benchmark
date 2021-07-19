@@ -1,0 +1,15 @@
+version: "3.3"
+
+services:
+  fake_api:
+    image: jaxgeller/lwan
+    volumes:
+      - ./../../data:/lwan/wwwroot
+    ports:
+      - 8000:8080
+  nginx-service:
+    image: nginx:1.21
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 8080:8080

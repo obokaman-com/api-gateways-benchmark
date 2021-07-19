@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "timeout": "3000ms",
+  "cache_ttl": "300s",
+  "host": [ "http://fake_api:8080" ],
+  "endpoints": [
+    {
+      "endpoint": "/test/",
+      "backend": [
+        {
+          "url_pattern": "/answer.json"
+        }
+      ]
+    }
+  ]
+}
