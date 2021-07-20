@@ -1,0 +1,11 @@
+_format_version: "1.1"
+services:
+  - host: fake_api
+    name: example_service
+    port: 8080
+    protocol: http
+    routes:
+      - name: test
+        paths:
+          - /test/
+        strip_path: true
