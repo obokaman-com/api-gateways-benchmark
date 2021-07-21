@@ -5,10 +5,16 @@
   "host": [ "http://fake_api:8080" ],
   "endpoints": [
     {
-      "endpoint": "/test/",
+      "endpoint": "/test",
       "backend": [
         {
-          "url_pattern": "/answer.json"
+          "url_pattern": "/answer.json",
+          "mapping": {
+            "firstName": "first_name",
+            "lastName": "last_name",
+            "phoneNumber": "phone_number"
+          },
+          "deny": ["address"]
         }
       ]
     }

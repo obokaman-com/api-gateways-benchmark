@@ -1,11 +1,20 @@
 _format_version: "1.1"
 services:
-  - host: fake_api
-    name: example_service
-    port: 8080
-    protocol: http
+  - name: test_service
+    url: http://fake_api:8080/answer.json
     routes:
       - name: test
         paths:
-          - /test/
+          - /test
         strip_path: true
+
+plugins:
+  - name: response-transformer
+    service: test_service
+    config:
+      remove:
+        json:
+          - address
+      append:
+        headers:
+          - X-New-Header:New-Header-Value

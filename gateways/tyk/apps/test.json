@@ -17,7 +17,7 @@
   },
   "driver": "otto",
   "proxy": {
-    "listen_path": "/test/",
+    "listen_path": "/test",
     "target_url": "http://fake_api:8080/answer.json",
     "strip_listen_path": true
   }
