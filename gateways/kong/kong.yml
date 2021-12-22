@@ -8,13 +8,3 @@ services:
           - /test
         strip_path: true
 
-plugins:
-  - name: response-transformer
-    service: test_service
-    config:
-      remove:
-        json:
-          - address
-      append:
-        headers:
-          - X-New-Header:New-Header-Value

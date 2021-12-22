@@ -8,13 +8,7 @@
       "endpoint": "/test",
       "backend": [
         {
-          "url_pattern": "/answer.json",
-          "mapping": {
-            "firstName": "first_name",
-            "lastName": "last_name",
-            "phoneNumber": "phone_number"
-          },
-          "deny": ["address"]
+          "url_pattern": "/answer.json"
         }
       ]
     }
