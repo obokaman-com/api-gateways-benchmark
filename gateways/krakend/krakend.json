@@ -1,15 +1,8 @@
 {
-  "version": 2,
+  "version": 3,
   "timeout": "3000ms",
   "cache_ttl": "300s",
   "host": ["http://fake_api:8080"],
-  "extra_config": {
-    "github_com/devopsfaith/krakend-gologging": {
-      "level": "CRITICAL",
-      "syslog": false,
-      "stdout": false
-    }
-  },
   "endpoints": [
     {
       "endpoint": "/test",
@@ -19,5 +12,12 @@
         }
       ]
     }
-  ]
+  ],
+  "extra_config": {
+    "telemetry/logging": {
+      "level": "CRITICAL",
+      "syslog": false,
+      "stdout": false
+    }
+  }
 }

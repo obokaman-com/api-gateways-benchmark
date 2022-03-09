@@ -1,14 +1,16 @@
 .PHONY: all krakend kong tyk nginx stop
 
 all: krakend kong tyk nginx
+TOTAL_REQUESTS := 100000
 
 krakend:
 	cd ${PWD}/gateways/krakend ; \
 	docker-compose up --build -d ; \
-	for c in 50 100 250 500 1000 ; \
+	for c in 500 ; \
 	do \
-		echo "Launching 100K requests to KrakenD - Concurrency: $$c" ; \
-		docker run --rm --net=host  williamyeh/hey -n 100000 -c $$c http://localhost:8080/test > ${PWD}/results/test_results_krakend_$${c}.txt ; \
+		echo "Launching ${TOTAL_REQUESTS} requests to KrakenD - Concurrency: $$c" ; \
+		sleep 3 ; \
+		docker run --platform linux/amd64 --rm --net=host  williamyeh/hey -n ${TOTAL_REQUESTS} -c $$c http://localhost:8080/test > ${PWD}/results/test_results_krakend_$${c}.txt ; \
 	done ; \
 	docker-compose down --volumes ; \
 	cd ${PWD}
@@ -16,10 +18,11 @@ krakend:
 kong:
 	cd ${PWD}/gateways/kong ; \
 	docker-compose up --build -d ; \
-	for c in 50 100 250 500 1000 ; \
+	for c in 500 ; \
 	do \
-		echo "Launching 100K requests to Kong - Concurrency: $$c" ; \
-		docker run --rm --net=host  williamyeh/hey -n 100000 -c $$c http://localhost:8080/test > ${PWD}/results/test_results_kong_$${c}.txt ; \
+		echo "Launching ${TOTAL_REQUESTS} requests to Kong - Concurrency: $$c" ; \
+		sleep 3 ; \
+		docker run --platform linux/amd64 --rm --net=host  williamyeh/hey -n ${TOTAL_REQUESTS} -c $$c http://localhost:8080/test > ${PWD}/results/test_results_kong_$${c}.txt ; \
 	done ; \
 	docker-compose down --volumes ; \
 	cd ${PWD}
@@ -27,10 +30,11 @@ kong:
 tyk:
 	cd ${PWD}/gateways/tyk ; \
 	docker-compose up --build -d ; \
-	for c in 50 100 250 500 1000 ; \
+	for c in 500 ; \
 	do \
-		echo "Launching 100K requests to Tyk - Concurrency: $$c" ; \
-		docker run --rm --net=host  williamyeh/hey -n 100000 -c $$c http://localhost:8080/test > ${PWD}/results/test_results_tyk_$${c}.txt ; \
+		echo "Launching ${TOTAL_REQUESTS} requests to Tyk - Concurrency: $$c" ; \
+		sleep 3 ; \
+		docker run --platform linux/amd64 --rm --net=host  williamyeh/hey -n ${TOTAL_REQUESTS} -c $$c http://localhost:8080/test > ${PWD}/results/test_results_tyk_$${c}.txt ; \
 	done ; \
 	docker-compose down --volumes ; \
 	cd ${PWD}
@@ -38,10 +42,11 @@ tyk:
 nginx:
 	cd ${PWD}/gateways/nginx ; \
 	docker-compose up --build -d ; \
-	for c in 50 100 250 500 1000 ; \
+	for c in 500 ; \
 	do \
-		echo "Launching 100K requests to Nginx - Concurrency: $$c" ; \
-		docker run --rm --net=host  williamyeh/hey -n 100000 -c $$c http://localhost:8080/test > ${PWD}/results/test_results_nginx_$${c}.txt ; \
+		echo "Launching ${TOTAL_REQUESTS} requests to Nginx - Concurrency: $$c" ; \
+		sleep 3 ; \
+		docker run --platform linux/amd64 --rm --net=host  williamyeh/hey -n ${TOTAL_REQUESTS} -c $$c http://localhost:8080/test > ${PWD}/results/test_results_nginx_$${c}.txt ; \
 	done ; \
 	docker-compose down --volumes ; \
 	cd ${PWD}
