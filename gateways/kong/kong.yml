@@ -1,4 +1,6 @@
-_format_version: "1.1"
+_format_version: "2.1"
+_transform: true
+
 services:
   - name: test_service
     url: http://fake_api:8080/answer.json
@@ -7,4 +9,3 @@ services:
         paths:
           - /test
         strip_path: true
-

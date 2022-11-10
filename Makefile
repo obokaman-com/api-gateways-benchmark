@@ -4,9 +4,9 @@ all: krakend kong tyk nginx
 TOTAL_REQUESTS := 100000
 
 krakend:
-	cd ${PWD}/gateways/krakend ; \
+	@cd ${PWD}/gateways/krakend ; \
 	docker-compose up --build -d ; \
-	for c in 500 ; \
+	for c in 50 100 250 500 1000 1500 2000 ; \
 	do \
 		echo "Launching ${TOTAL_REQUESTS} requests to KrakenD - Concurrency: $$c" ; \
 		sleep 3 ; \
@@ -16,9 +16,9 @@ krakend:
 	cd ${PWD}
 
 kong:
-	cd ${PWD}/gateways/kong ; \
+	@cd ${PWD}/gateways/kong ; \
 	docker-compose up --build -d ; \
-	for c in 500 ; \
+	for c in 50 100 250 500 1000 1500 2000 ; \
 	do \
 		echo "Launching ${TOTAL_REQUESTS} requests to Kong - Concurrency: $$c" ; \
 		sleep 3 ; \
@@ -28,9 +28,9 @@ kong:
 	cd ${PWD}
 
 tyk:
-	cd ${PWD}/gateways/tyk ; \
+	@cd ${PWD}/gateways/tyk ; \
 	docker-compose up --build -d ; \
-	for c in 500 ; \
+	for c in 50 100 250 500 1000 1500 2000 ; \
 	do \
 		echo "Launching ${TOTAL_REQUESTS} requests to Tyk - Concurrency: $$c" ; \
 		sleep 3 ; \
@@ -40,9 +40,9 @@ tyk:
 	cd ${PWD}
 
 nginx:
-	cd ${PWD}/gateways/nginx ; \
+	@cd ${PWD}/gateways/nginx ; \
 	docker-compose up --build -d ; \
-	for c in 500 ; \
+	for c in 50 100 250 500 1000 1500 2000 ; \
 	do \
 		echo "Launching ${TOTAL_REQUESTS} requests to Nginx - Concurrency: $$c" ; \
 		sleep 3 ; \
@@ -52,7 +52,7 @@ nginx:
 	cd ${PWD}
 
 stop:
-	cd ${PWD}/gateways/krakend ; docker-compose down --volumes ; \
+	@cd ${PWD}/gateways/krakend ; docker-compose down --volumes ; \
 	cd ${PWD}/gateways/kong ; docker-compose down --volumes ; \
 	cd ${PWD}/gateways/tyk ; docker-compose down --volumes ; \
 	cd ${PWD}/gateways/nginx ; docker-compose down --volumes ; \
