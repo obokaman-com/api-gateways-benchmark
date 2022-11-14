@@ -1,3 +1,3 @@
-FROM kong:2.5
+FROM kong:3.0-ubuntu
 
 COPY kong.yml /
