@@ -1,0 +1,76 @@
+{
+    "id_user": 1,
+    "first_name": "Misti",
+    "last_name": "Jost",
+    "gender": "Female",
+    "age": 43,
+    "address": {
+        "country": "US",
+        "city": "New York",
+        "postalCode": "10021",
+        "email": "mjost0@posterous.com",
+        "phoneNumber":
+    [
+        {
+            "type": "home",
+            "number": "212 555-1234"
+        },
+        {
+            "type": "fax",
+            "number": "646 555-4567"
+        },
+        {
+            "type": "home",
+            "number": "212 555-1234"
+        },
+        {
+            "type": "fax",
+            "number": "646 555-4567"
+        },
+        {
+            "type": "home",
+            "number": "212 555-1234"
+        },
+        {
+            "type": "fax",
+            "number": "646 555-4567"
+        },
+        {
+            "type": "home",
+            "number": "212 555-1234"
+        },
+        {
+            "type": "fax",
+            "number": "646 555-4567"
+        },
+        {
+            "type": "home",
+            "number": "212 555-1234"
+        },
+        {
+            "type": "fax",
+            "number": "646 555-4567"
+        },
+        {
+            "type": "home",
+            "number": "212 555-1234"
+        },
+        {
+            "type": "fax",
+            "number": "646 555-4567"
+        }
+    ]
+    },
+    "ip_address": "8.164.128.51",
+    "car": {
+        "car_mark": "Mazda",
+        "car_model": "Mazdaspeed 3",
+        "car_model_year": 2008
+    },
+    "image": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAJ/SURBVDjLpZNLiI1xGMZ/3/edOWZojjkiudbMuEVMM4SMBVlbSUpZyAIhG4qlkcJWycZOSslCMTNFuYVpRrkzLuMy5tA4xulcv//t/Vt80ZTLxltvz7N43vd5F+8TeO/5n0r9JNLTs9A7t8FbO0WsfSvWdtdv2VIAKJ45kxWtt4rWh5xSQ6LUyeldXVcAAu890t29zzt3hPp0ljBCyiVMofhMjNkmWldE64t1U5qWTpjXiiuVqDx8RDX35ZxTalfgrl7d6K2+HC5cQBBGYAyk05jhYWrPX350WpcbWpsX17e0QGEMwgiasnzv7eX7oyfHUmLt3mjWTIJqFXJfwAlYS13zHKKV7XN9rInqG6D/AYgkBo0TyXSuId/Xvz0lxiyJMhkYegfGghdwDl68JpycgSiAwTeAgLYJ5scIWgUXx5mUGJPGOYgVKJUs0CZZMpIDaxNnEfAOlAFxYDSilKRE66K3dlpgDcQ1sC4ZtjbB8dxacBZSIYQhTqkwFKWu28FBmD0TKmWo1SCOwagEdZxgrZYYlEowv4X8jVuIUudDp9SJyodP7+NPI9C2FNJRIipXk4FqDVQM1QrUhbB2FYXRMXJXusdE667Ae0/++PFlotTZhmzjiknLlxOO5mDgCQRBcnq1Cm2L8M3zGO3p5fPte0/FmN0d/f13gp+v/Pnw4clOqQOi1P5sR1tj46wZcPceFMuwdjXFbwXen7+gRevTYsyxjoGB/K9PHF/vduxY4ZQ61dQ8d/XUDevBWfJ37jJy/eaQaL2z/f79a+P1wZ/C9Grz5ian1FHRek92zozg68s3l0Trg+19fUO/ib33f+3H69ZtetjZuf9fmuB/4/wDFoO2ZVesLdkAAAAASUVORK5CYII=",
+    "IBAN": "FO56 3807 5413 3357 70",
+    "dom": "amazonaws.com",
+    "nato": "Quebec Golf Yankee Delta Kilo Uniform Foxtrot Romeo India Alfa Oscar Sierra Papa X-ray Charlie Echo Mike Juliett November Victor",
+    "sha": "09ee88f9662e1fa9cc25a14575d32eb62cd974074d62e70206bb9452532bb6ce",
+    "ccc": "Adaptive regional secured line"
+}

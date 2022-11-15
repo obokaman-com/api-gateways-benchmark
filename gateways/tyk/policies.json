@@ -1,0 +1,22 @@
+{
+  "default": {
+  	"id":"default",
+  	"org_id":"default",
+    "access_rights": {
+      "1": {
+        "allowed_urls": [
+        	{
+        		"url":"/auth",
+        		"methods": ["GET"]
+        	}
+        ],
+        "api_id": "1",
+        "api_name": "Auth API",
+        "versions": ["Default"]
+      }
+    },
+    "name": "My POLICY NAME",
+    "state": "active",
+    "tags": ["Startup Users"]
+  }
+}

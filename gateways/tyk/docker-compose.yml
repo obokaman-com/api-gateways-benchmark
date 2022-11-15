@@ -4,6 +4,7 @@ services:
     image: jaxgeller/lwan
     volumes:
       - ./../../data:/lwan/wwwroot
+      - ./../../data/lwan.conf:/lwan/lwan.conf
     ports:
       - 8000:8080
     networks:
@@ -12,11 +13,13 @@ services:
     image: docker.tyk.io/tyk-gateway/tyk-gateway:v3.2.1
     ports:
       - 8080:8080
+      - 3000:3000
     networks:
       - tyk
     volumes:
       - ./tyk.conf:/opt/tyk-gateway/tyk.conf
       - ./apps:/opt/tyk-gateway/apps
+      - ./policies.json:/opt/tyk-gateway/policies/policies.json
     environment:
       - TYK_GW_SECRET=foo
     depends_on:

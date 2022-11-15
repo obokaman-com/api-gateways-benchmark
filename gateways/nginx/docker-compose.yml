@@ -5,6 +5,7 @@ services:
     image: jaxgeller/lwan
     volumes:
       - ./../../data:/lwan/wwwroot
+      - ./../../data/lwan.conf:/lwan/lwan.conf
     ports:
       - 8000:8080
   nginx-service:

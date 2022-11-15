@@ -3,21 +3,67 @@
   "timeout": "3000ms",
   "cache_ttl": "300s",
   "host": ["http://fake_api:8080"],
-  "endpoints": [
-    {
+  "endpoints": [{
       "endpoint": "/test",
-      "backend": [
+      "output_encoding":"no-op",
+      "backend": [{
+        "url_pattern": "/answer.json",
+        "encoding":"no-op"
+      }]
+    },
+    {
+      "endpoint": "/auth",
+      "output_encoding":"no-op",
+      "extra_config": {
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://fake_api:8080/symmetric.json",
+          "cache": true,
+          "disable_jwk_security": true
+        }
+      },
+      "backend": [{
+        "url_pattern": "/answer.json",
+        "encoding":"no-op"
+      }]
+    },
+    {
+      "endpoint": "/backend",
+      "extra_config": {
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://fake_api:8080/symmetric.json",
+          "cache": true,
+          "disable_jwk_security": true
+        }
+      },
+      "backend": [{
+          "url_pattern": "/data.json",
+          "group": "backend1",
+          "deny": ["address.city"]
+        },
         {
-          "url_pattern": "/answer.json"
+          "url_pattern": "/data.json",
+          "group": "backend2",
+          "deny": ["address.city"]
+        },
+        {
+          "url_pattern": "/data.json",
+          "group": "backend3",
+          "deny": ["address.city"]
         }
       ]
     }
   ],
+  "max_idle_connections_per_host":2000,
   "extra_config": {
     "telemetry/logging": {
-      "level": "CRITICAL",
-      "syslog": false,
-      "stdout": false
+      "level": "DEBUG",
+      "stdout": true
+    },
+    "router": {
+      "disable_access_log": true,
+      "disable_path_decoding": true
     }
   }
 }

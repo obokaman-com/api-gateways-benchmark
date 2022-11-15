@@ -2,10 +2,53 @@ _format_version: "2.1"
 _transform: true
 
 services:
-  - name: test_service
-    url: http://fake_api:8080/answer.json
-    routes:
-      - name: test
-        paths:
-          - /test
-        strip_path: true
+- name: auth_service
+  url: http://fake_api:8080/answer.json
+  routes:
+    - name: auth
+      paths:
+        - /auth
+      strip_path: true
+- name: test_service
+  url: http://fake_api:8080/answer.json
+  routes:
+    - name: test
+      paths:
+        - /test
+      strip_path: true
+- name: backend_service
+  url: http://fake_api:8080/data.json
+  routes:
+    - name: backend
+      paths:
+        - /backend1
+        - /backend2
+        - /backend3
+      strip_path: true
+
+plugins:
+- name: response-transformer
+  service: backend_service
+  config: 
+    remove:
+      json:
+      - address.city
+- name: jwt
+  service: auth_service
+  config:
+    key_claim_name: kid
+    secret_is_base64: true
+    claims_to_verify: ["exp","nbf"]
+- name: jwt
+  service: backend_service
+  config:
+    key_claim_name: kid
+    secret_is_base64: true
+    claims_to_verify: ["exp","nbf"]
+
+consumers:
+- username: sim2
+  jwt_secrets:
+    - algorithm: HS256
+      key: sim2
+      secret: "AyM1SysPpbyDfgZld3umj1qzKObwVMkoqQ-EstJQLr_T-1qS0gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr1Z9CAow"
