@@ -4,13 +4,15 @@ services:
     image: jaxgeller/lwan
     volumes:
       - ./../../data:/lwan/wwwroot
+      - ./../../data/lwan.conf:/lwan/lwan.conf
     ports:
       - 8000:8080
     networks:
       - kong
   kong:
-    build:
-      context: ./
+    image: kong:3.0-ubuntu
+    volumes:
+      - ./kong.yml:/kong.yml
     environment:
       KONG_DATABASE: "off"
       KONG_DECLARATIVE_CONFIG: kong.yml
