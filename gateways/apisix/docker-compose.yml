@@ -1,0 +1,23 @@
+version: '3.3'
+services:
+  fake_api:
+    image: jaxgeller/lwan
+    volumes:
+      - ./../../data:/lwan/wwwroot
+      - ./../../data/lwan.conf:/lwan/lwan.conf
+    ports:
+      - 8000:8080
+    networks:
+      - apisix
+  apisix:
+    image: apache/apisix
+    volumes:
+      - ./config.yaml:/usr/local/apisix/conf/config.yaml
+      - ./apisix.yaml:/usr/local/apisix/conf/apisix.yaml
+    ports:
+      - 8080:8080
+    networks:
+      - apisix
+
+networks:
+  apisix:

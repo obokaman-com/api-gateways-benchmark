@@ -1,0 +1,38 @@
+routes:
+  -
+    uri: /test
+    upstream:
+      nodes:
+        "fake_api:8080": 1
+      type: roundrobin
+    plugins:
+      proxy-rewrite:
+        uri: "/answer.json"
+  -
+    uri: /auth
+    upstream:
+      nodes:
+        "fake_api:8080": 1
+      type: roundrobin
+    plugins:
+      proxy-rewrite:
+        uri: "/answer.json"
+      jwt-auth: []
+  -
+    uri: /backend
+    upstream:
+      nodes:
+        "fake_api:8080": 1
+      type: roundrobin
+    plugins:
+      proxy-rewrite:
+        uri: "/data.json"
+      jwt-auth: []
+
+consumers:
+  - username: sim2
+    plugins:
+      jwt-auth:
+        key: sim2
+        secret: AyM1SysPpbyDfgZld3umj1qzKObwVMkoqQ-EstJQLr_T-1qS0gZH75aKtMN3Yj0iPS4hcgUuTwjAzZr1Z9CAow
+#END

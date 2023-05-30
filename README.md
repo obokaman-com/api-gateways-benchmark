@@ -17,7 +17,7 @@ $ make all
 Write `make` + the name of the Gateway.
 
 ```shell
-$ make [krakend|kong|tyk|nginx]
+$ make [krakend|kong|tyk|nginx|apisix]
 ```
 
 KrakenD

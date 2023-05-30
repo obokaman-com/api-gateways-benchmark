@@ -1,13 +1,11 @@
-.PHONY: all krakend kong tyk nginx stop
+.PHONY: all krakend kong tyk nginx apisix stop
 
-all: krakend kong nginx tyk
-# TOTAL_REQUESTS := 1000000
+all: krakend kong nginx tyk apisix
 TOTAL_REQUESTS := 100000
 TOKEN := "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNpbTIifQ.eyJpc3MiOiJhMzZjMzA0OWIzNjI0OWEzYzlmODg5MWNiMTI3MjQzYyIsImV4cCI6OTk0MjQzMDA1NCwibmJmIjoxNDQyNDI2NDU0LCJpYXQiOjE0NDI0MjY0NTQsInBvbCI6ImRlZmF1bHQiLCJzdWIiOiIxIiwianRpIjoiNWI0MzczZWU2M2M3ZDM1MGVmOGZkOWFmZmQ1MzgzNGUifQ.ew4Qe36jUYwKm1elij8opPabHtx75RDajBeHVRr-WUg"
 
 test:
 	cd ${PWD}/gateways/${name} ; \
-# 	for c in 50 100 250 500 750 1000 1500 ; \
 	for c in 50 100 250 500; \
 	do \
 		echo "Launching ${TOTAL_REQUESTS} requests to ${name} (${endpoint}) - Concurrency: $$c" ; \
@@ -34,9 +32,13 @@ tyk: stop
 nginx: stop
 	name=nginx make -e test-case
 
+apisix: stop
+	TOKEN="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InNpbTIifQ.eyJpc3MiOiJhMzZjMzA0OWIzNjI0OWEzYzlmODg5MWNiMTI3MjQzYyIsImV4cCI6OTk0MjQzMDA1NCwibmJmIjoxNDQyNDI2NDU0LCJpYXQiOjE0NDI0MjY0NTQsInBvbCI6ImRlZmF1bHQiLCJzdWIiOiIxIiwianRpIjoiNWI0MzczZWU2M2M3ZDM1MGVmOGZkOWFmZmQ1MzgzNGUiLCJrZXkiOiJzaW0yIn0.8ApAyGGeIpzEVBMV1DAoQ8Rm_RrrN5wznaPWkofyuVw" name=apisix make -e test-case
+
 stop:
 	@cd ${PWD}/gateways/krakend ; docker-compose down --volumes --remove-orphans ; \
 	cd ${PWD}/gateways/kong ; docker-compose down --volumes --remove-orphans ; \
 	cd ${PWD}/gateways/tyk ; docker-compose down --volumes --remove-orphans ; \
 	cd ${PWD}/gateways/nginx ; docker-compose down --volumes --remove-orphans ; \
+	cd ${PWD}/gateways/apisix ; docker-compose down --volumes --remove-orphans ; \
 	cd ${PWD}

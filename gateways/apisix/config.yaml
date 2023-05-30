@@ -1,0 +1,9 @@
+apisix:
+  node_listen: 8080
+  enable_control: false
+
+deployment:
+  role: data_plane
+  role_data_plane:
+    config_provider: yaml
+#END
