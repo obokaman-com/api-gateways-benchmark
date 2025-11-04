@@ -9,6 +9,11 @@ services:
       - 8000:8080
     networks:
       - kong
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
   kong:
     image: kong:3.0-ubuntu
     volumes:
@@ -20,6 +25,11 @@ services:
       - 8080:8000
     networks:
       - kong
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1G
 
 networks:
   kong:

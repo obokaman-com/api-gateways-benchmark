@@ -8,9 +8,19 @@ services:
       - ./../../data/lwan.conf:/lwan/lwan.conf
     ports:
       - 8000:8080
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
   nginx-service:
     image: nginx:1.21
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
       - 8080:8080
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1G

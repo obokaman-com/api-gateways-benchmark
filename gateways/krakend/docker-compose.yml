@@ -7,12 +7,29 @@ services:
       - ./../../data/lwan.conf:/lwan/lwan.conf
     ports:
       - 8000:8080
+    networks:
+      - krakend
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
   krakend:
     image: devopsfaith/krakend:2.1
     volumes:
       - ./krakend.json:/etc/krakend/krakend.json
-    command: ["run", "-c", "krakend.json", ">/dev/null 2>&1"]
+    command: ["run", "-c", "krakend.json"]
     ports:
       - 8080:8080
+    networks:
+      - krakend
     depends_on:
       - fake_api
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1G
+
+networks:
+  krakend:

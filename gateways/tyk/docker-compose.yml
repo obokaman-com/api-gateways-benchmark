@@ -9,6 +9,11 @@ services:
       - 8000:8080
     networks:
       - tyk
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
   tyk-gateway:
     image: docker.tyk.io/tyk-gateway/tyk-gateway:v3.2.1
     ports:
@@ -25,12 +30,22 @@ services:
     depends_on:
       - tyk-redis
       - fake_api
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1G
   tyk-redis:
     image: redis:5.0-alpine
     networks:
       - tyk
     ports:
       - 6379:6379
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
 
 networks:
   tyk:
