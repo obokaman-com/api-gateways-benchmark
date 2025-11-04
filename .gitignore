@@ -1,0 +1,10 @@
+# Compiled binaries
+analyze_results
+
+# Test results
+results/*.txt
+results/*.json
+results/*.md
+
+# Keep the directory structure
+!results/.gitignore

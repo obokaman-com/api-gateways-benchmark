@@ -11,7 +11,7 @@ Results are being saved in the `results` folder.
 - **KrakenD optimizations**: Changed logging level from DEBUG to WARNING for ~20-40% better performance
 - **Fair resource allocation**: All gateways now have consistent CPU (2.0) and memory (1G) limits
 - **Network consistency**: Added custom network to KrakenD for fair comparison
-- **Automated analysis**: New Python script to generate comprehensive benchmark reports
+- **Automated analysis**: New Go tool to generate comprehensive benchmark reports (consistent with KrakenD's ecosystem)
 
 ## Running Benchmarks
 
@@ -34,7 +34,14 @@ $ make [krakend|kong|tyk|nginx|apisix]
 After running benchmarks, generate a comprehensive report:
 
 ```shell
-$ python3 analyze_results.py
+$ go run analyze_results.go
+```
+
+Or build and run the binary:
+
+```shell
+$ go build -o analyze_results analyze_results.go
+$ ./analyze_results
 ```
 
 This will create:

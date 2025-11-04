@@ -69,7 +69,7 @@ This document details the analysis of the API Gateway benchmark suite and the pe
    - Prevents resource starvation
 
 2. **Analysis Automation**
-   - Created `analyze_results.py` script
+   - Created `analyze_results.go` tool (Go - consistent with KrakenD ecosystem)
    - Automatic report generation
    - JSON and Markdown outputs
    - Comprehensive metrics:
@@ -150,7 +150,7 @@ With the performance fixes applied, KrakenD should demonstrate:
 
 ### Prerequisites
 - Docker and Docker Compose installed
-- Python 3 for analysis script
+- Go 1.21+ for analysis tool
 - At least 8GB RAM available
 - Linux or macOS (Windows WSL2 also works)
 
@@ -172,7 +172,13 @@ With the performance fixes applied, KrakenD should demonstrate:
 
 3. **Generate report**:
    ```bash
-   python3 analyze_results.py
+   go run analyze_results.go
+   ```
+
+   Or build and run:
+   ```bash
+   go build -o analyze_results analyze_results.go
+   ./analyze_results
    ```
 
 4. **Review results**:
